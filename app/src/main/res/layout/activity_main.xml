@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/main_sections"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#88448844">
+
+        <LinearLayout
+            android:id="@+id/main_sections_bar"
+            android:layout_height="45dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="#448844"
+            android:gravity="center">
+
+            <TextView
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:text="Spells"
+                android:textSize="15sp"
+                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="test"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal|bottom"
+            android:layout_below="@+id/main_sections_bar" />
+        <!--
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/main_sections_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/main_sections_bar"/>
+        -->
+
+    </RelativeLayout>
+
+</RelativeLayout>
