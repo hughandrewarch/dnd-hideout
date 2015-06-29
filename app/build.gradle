@@ -19,6 +19,15 @@ android {
     }
 }
 
+//Provides a nice output at the end of each test
+gradle.projectsEvaluated {
+    tasks.withType(Test) { task ->
+        task.afterTest { desc, result ->
+            println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+        }
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
