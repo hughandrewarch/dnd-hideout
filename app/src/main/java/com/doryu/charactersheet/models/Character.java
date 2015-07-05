@@ -2,6 +2,55 @@ package com.doryu.charactersheet.models;
 
 public class Character {
 
+
+    
+    public enum CharacterClass {
+        BARBARIAN,
+        BARD,
+        CLERIC,
+        DRUID,
+        FIGHTER,
+        MONK,
+        PALADIN,
+        RANGER,
+        ROGUE,
+        SORCERER,
+        WARLOCK,
+        WIZARD;
+    }
+
+    public enum Race {
+        DWARF,
+        ELF,
+        HALFLING,
+        HUMAN,
+        DRAGONBORN,
+        GNOME,
+        HALF_ELF,
+        HALF_ORC,
+        TIEFLING;
+    }
+
+    public enum Gender {
+        MALE,
+        FEMALE,
+        HERMES;
+    }
+
+    public enum Size {
+        EXTRA_SMALL,
+        SMALL,
+        MEDIUM,
+        LARGE,
+        EXTRA_LARGE;
+    }
+
+    public enum Vision {
+        NORMAL,
+        DARKVISION,
+        SUPERIOR_DARKVISION;
+    }
+
     private int mId;
 
     private String mName;
@@ -25,6 +74,8 @@ public class Character {
     private int mExperience;
     private int mTotalHitPoints;
     private int mRemainingHitPoints;
+
+    private int mExtraHitPoints;
 
     public int getId() {
         return mId;
@@ -50,12 +101,20 @@ public class Character {
         mCharacterClass = characterClass;
     }
 
+    public void setCharacterClass(CharacterClass characterClass) {
+        mCharacterClass = characterClass.ordinal();
+    }
+
     public int getRace() {
         return mRace;
     }
 
     public void setRace(int race) {
         mRace = race;
+    }
+
+    public void setRace(Race race) {
+        mRace = race.ordinal();
     }
 
     public int getGender() {
@@ -66,12 +125,20 @@ public class Character {
         mGender = gender;
     }
 
+    public void setGender(Gender gender) {
+        mGender = gender.ordinal();
+    }
+
     public int getSize() {
         return mSize;
     }
 
     public void setSize(int size) {
         mSize = size;
+    }
+
+    public void setSize(Size size) {
+        mSize = size.ordinal();
     }
 
     public int getWeightInPounds() {
@@ -96,6 +163,10 @@ public class Character {
 
     public void setVision(int vision) {
         mVision = vision;
+    }
+
+    public void setVision(Vision vision) {
+        mVision = vision.ordinal();
     }
 
     public int getStrength() {
@@ -176,5 +247,13 @@ public class Character {
 
     public void setRemainingHitPoints(int remainingHitPoints) {
         mRemainingHitPoints = remainingHitPoints;
+    }
+
+    public int getExtraHitPoints() {
+        return mExtraHitPoints;
+    }
+
+    public void setExtraHitPoints(int extraHitPoints) {
+        mExtraHitPoints = extraHitPoints;
     }
 }
