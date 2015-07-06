@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.doryu.charactersheet.models.Character;
+import com.doryu.charactersheet.models.CharacterModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,17 +74,17 @@ public class CharacterTable {
         onCreate(database);
     }
 
-    public static ContentValues[] getContentValues(List<Character> characters) {
+    public static ContentValues[] getContentValues(List<CharacterModel> characters) {
         final ArrayList<ContentValues> values = new ArrayList<>();
 
-        for (Character character : characters) {
+        for (CharacterModel character : characters) {
             values.add(getContentValue(character));
         }
 
         return values.toArray(new ContentValues[values.size()]);
     }
 
-    public static ContentValues getContentValue(Character character) {
+    public static ContentValues getContentValue(CharacterModel character) {
         ContentValues values = new ContentValues();
 
         values.put(Columns.NAME.toString(), character.getName());

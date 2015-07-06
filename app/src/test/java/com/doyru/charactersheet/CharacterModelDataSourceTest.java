@@ -3,7 +3,7 @@ package com.doyru.charactersheet;
 import com.doryu.charactersheet.BuildConfig;
 import com.doryu.charactersheet.CharacterSheetApplication;
 import com.doryu.charactersheet.datasources.CharacterDataSource;
-import com.doryu.charactersheet.models.Character;
+import com.doryu.charactersheet.models.CharacterModel;
 import com.doyru.charactersheet.util.FakeDataUtil;
 
 import org.junit.Test;
@@ -17,14 +17,15 @@ import static org.fest.assertions.api.Assertions.assertThat;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class)
-public class CharacterDataSourceTest {
+public class CharacterModelDataSourceTest {
 
+    // TODO test classes
     @Test
     public void shouldRetrieveCorrectValues() {
         CharacterDataSource dataSource = getCharacterDataSource();
-        Character characterToInsert = FakeDataUtil.getCharacter();
-        List<Character> characterList;
-        Character expectedCharacter;
+        CharacterModel characterToInsert = FakeDataUtil.getCharacter();
+        List<CharacterModel> characterList;
+        CharacterModel expectedCharacter;
 
         dataSource.open();
         dataSource.createCharacter(characterToInsert);
@@ -36,13 +37,14 @@ public class CharacterDataSourceTest {
 
         expectedCharacter = characterList.get(0);
 
+        assertThat(expectedCharacter.getId()).isNotNegative();
         assertThat(expectedCharacter.getName()).isNotNull().isEqualTo("Bhurgharr");
-        assertThat(expectedCharacter.getRace()).isNotNull().isEqualTo(Character.Race.DRAGONBORN.ordinal());
-        assertThat(expectedCharacter.getGender()).isNotNull().isEqualTo(Character.Gender.MALE.ordinal());
-        assertThat(expectedCharacter.getSize()).isNotNull().isEqualTo(Character.Size.MEDIUM.ordinal());
+        assertThat(expectedCharacter.getRace()).isNotNull().isEqualTo(CharacterModel.Race.DRAGONBORN.ordinal());
+        assertThat(expectedCharacter.getGender()).isNotNull().isEqualTo(CharacterModel.Gender.MALE.ordinal());
+        assertThat(expectedCharacter.getSize()).isNotNull().isEqualTo(CharacterModel.Size.MEDIUM.ordinal());
         assertThat(expectedCharacter.getWeightInPounds()).isNotNull().isEqualTo(260);
         assertThat(expectedCharacter.getSpeed()).isNotNull().isEqualTo(30);
-        assertThat(expectedCharacter.getVision()).isNotNull().isEqualTo(Character.Vision.NORMAL.ordinal());
+        assertThat(expectedCharacter.getVision()).isNotNull().isEqualTo(CharacterModel.Vision.NORMAL.ordinal());
         assertThat(expectedCharacter.getStrength()).isNotNull().isEqualTo(17);
         assertThat(expectedCharacter.getDexterity()).isNotNull().isEqualTo(8);
         assertThat(expectedCharacter.getConstitution()).isNotNull().isEqualTo(14);

@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.doryu.charactersheet.CharacterSheetApplication;
 import com.doryu.charactersheet.datasets.CharacterTable;
 import com.doryu.charactersheet.helpers.CharacterDatabaseHelper;
-import com.doryu.charactersheet.models.Character;
+import com.doryu.charactersheet.models.CharacterModel;
 
 public class CharacterDataSource {
 
@@ -53,7 +53,7 @@ public class CharacterDataSource {
         dbHelper.close();
     }
 
-    public void createCharacter(Character character) {
+    public void createCharacter(CharacterModel character) {
         ContentValues values = CharacterTable.getContentValue(character);
 
         database.insertWithOnConflict(CharacterTable.TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
@@ -61,7 +61,7 @@ public class CharacterDataSource {
         CharacterSheetApplication.getAppContext().getContentResolver().notifyChange(CharacterDatabaseHelper.CONTENT_URI, null);
     }
 
-    public void createCharacters(List<Character> stations) {
+    public void createCharacters(List<CharacterModel> stations) {
         ContentValues[] values = CharacterTable.getContentValues(stations);
 
 
@@ -72,20 +72,20 @@ public class CharacterDataSource {
         CharacterSheetApplication.getAppContext().getContentResolver().notifyChange(CharacterDatabaseHelper.CONTENT_URI, null);
     }
 
-    public void deleteCharacter(Character station) {
+    public void deleteCharacter(CharacterModel station) {
         long id = station.getId();
 
         database.delete(CharacterTable.TABLE_NAME, CharacterTable.Columns._ID + " = " + id, null);
     }
 
-    public ArrayList<Character> getAllCharacters() {
-        ArrayList<Character> characters = new ArrayList<Character>();
+    public ArrayList<CharacterModel> getAllCharacters() {
+        ArrayList<CharacterModel> characters = new ArrayList<CharacterModel>();
 
         Cursor cursor = database.query(CharacterTable.TABLE_NAME, allColumns, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Character station = cursorToComment(cursor);
+            CharacterModel station = cursorToComment(cursor);
             characters.add(station);
             cursor.moveToNext();
         }
@@ -94,8 +94,8 @@ public class CharacterDataSource {
         return characters;
     }
 
-    private Character cursorToComment(Cursor cursor) {
-        Character station = new Character();
+    private CharacterModel cursorToComment(Cursor cursor) {
+        CharacterModel station = new CharacterModel();
 
         // TODO fill in the rest of these, but use static values instead of hardcoded numbers
         station.setId(cursor.getInt(CharacterTable.Columns._ID.ordinal()));
