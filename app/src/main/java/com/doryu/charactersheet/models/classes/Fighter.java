@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Fighter extends CharacterClass {
 
-    public Fighter(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return FIGHTER;

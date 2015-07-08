@@ -1,5 +1,6 @@
 package com.doyru.charactersheet.models.classes;
 
+import com.doryu.charactersheet.BuildConfig;
 import com.doryu.charactersheet.models.CharacterModel;
 import com.doryu.charactersheet.models.Dice;
 import com.doryu.charactersheet.models.classes.CharacterClass;
@@ -9,9 +10,14 @@ import com.doyru.charactersheet.util.FakeDataUtil;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class)
 public class DruidTest {
 
     private Druid mDruid;
@@ -19,7 +25,8 @@ public class DruidTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mDruid = new Druid(fakeCharacter);
+        mDruid = new Druid();
+        fakeCharacter.addCharacterClass(mDruid);
     }
 
     @Test

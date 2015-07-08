@@ -87,6 +87,7 @@ public class CharacterTable {
     public static ContentValues getContentValue(CharacterModel character) {
         ContentValues values = new ContentValues();
 
+        values.put(Columns._ID.toString(), character.getId());
         values.put(Columns.NAME.toString(), character.getName());
         values.put(Columns.CHARACTER_CLASS.toString(), character.getCharacterClass());
         values.put(Columns.RACE.toString(), character.getRace());

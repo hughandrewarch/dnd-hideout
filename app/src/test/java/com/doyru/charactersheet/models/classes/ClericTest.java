@@ -26,7 +26,8 @@ public class ClericTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mCleric = new Cleric(fakeCharacter);
+        mCleric = new Cleric();
+        fakeCharacter.addCharacterClass(mCleric);
     }
 
     @Test

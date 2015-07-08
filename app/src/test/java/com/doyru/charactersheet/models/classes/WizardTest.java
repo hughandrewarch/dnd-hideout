@@ -25,7 +25,8 @@ public class WizardTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mWizard = new Wizard(fakeCharacter);
+        mWizard = new Wizard();
+        fakeCharacter.addCharacterClass(mWizard);
     }
 
     @Test

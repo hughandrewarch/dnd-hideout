@@ -25,7 +25,7 @@ public class SorcererTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mSorcerer = new Sorcerer(fakeCharacter);
+        mSorcerer = new Sorcerer();
     }
 
     @Test

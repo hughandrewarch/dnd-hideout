@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Paladin extends CharacterClass {
 
-    public Paladin(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return PALADIN;

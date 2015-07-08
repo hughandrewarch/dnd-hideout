@@ -25,7 +25,7 @@ public class WarlockTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mWarlock = new Warlock(fakeCharacter);
+        mWarlock = new Warlock();
     }
 
     @Test

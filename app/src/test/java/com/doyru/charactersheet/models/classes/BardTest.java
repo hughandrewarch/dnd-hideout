@@ -25,7 +25,8 @@ public class BardTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mBard = new Bard(fakeCharacter);
+        mBard = new Bard();
+        fakeCharacter.addCharacterClass(mBard);
     }
 
     @Test

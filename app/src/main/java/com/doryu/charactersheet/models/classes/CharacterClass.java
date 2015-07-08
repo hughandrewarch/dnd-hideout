@@ -19,12 +19,18 @@ public abstract class CharacterClass {
     public static final int SORCERER = 10;
     public static final int WARLOCK = 11;
     public static final int WIZARD = 12;
-    
+
+    private int mId;
+    private int mCharacterId;
     protected int mLevel;
     protected WeakReference<CharacterModel> mCharacterWeakReference;
 
-    public CharacterClass(CharacterModel character) {
-        mCharacterWeakReference = new WeakReference<>(character);
+    public int getId() {
+        return mId;
+    }
+
+    public void setId(int id) {
+        mId = id;
     }
 
     public int getLevel() {
@@ -57,8 +63,21 @@ public abstract class CharacterClass {
         return mCharacterWeakReference.get();
     }
 
+    public void setCharacter(CharacterModel character) {
+        mCharacterWeakReference = new WeakReference<>(character);
+        mCharacterId = character.getId();
+    }
+
     public abstract int getClassType();
     public abstract int getNumberSpellsKnown();
     public abstract int getNumberCantripsKnown();
     public abstract Dice getHitDice();
+
+    public int getCharacterId() {
+        return mCharacterId;
+    }
+
+    public void setCharacterId(int characterId) {
+        mCharacterId = characterId;
+    }
 }

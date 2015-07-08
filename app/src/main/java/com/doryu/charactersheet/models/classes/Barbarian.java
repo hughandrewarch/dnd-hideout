@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Barbarian extends CharacterClass {
 
-    public Barbarian(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return BARBARIAN;

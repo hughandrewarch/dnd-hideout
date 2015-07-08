@@ -25,7 +25,8 @@ public class BarbarianTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mBarbarian = new Barbarian(fakeCharacter);
+        mBarbarian = new Barbarian();
+        fakeCharacter.addCharacterClass(mBarbarian);
     }
 
     @Test

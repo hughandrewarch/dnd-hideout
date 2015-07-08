@@ -82,10 +82,6 @@ public class CharacterClassTest {
 
     private static class GenericClass extends CharacterClass {
 
-        public GenericClass() {
-            super(null);
-        }
-
         @Override
         public int getClassType() {
             return 0;

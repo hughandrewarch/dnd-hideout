@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Ranger extends CharacterClass {
 
-    public Ranger(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return RANGER;

@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Monk extends CharacterClass {
 
-    public Monk(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return MONK;

@@ -1,6 +1,7 @@
 package com.doyru.charactersheet.util;
 
 import com.doryu.charactersheet.models.CharacterModel;
+import com.doryu.charactersheet.models.classes.CharacterClass;
 import com.doryu.charactersheet.models.classes.Paladin;
 
 public class FakeDataUtil {
@@ -61,5 +62,12 @@ public class FakeDataUtil {
         fakeCharacter.setExtraHitPoints(0);
 
         return fakeCharacter;
+    }
+
+    public static Paladin getPaladin() {
+        Paladin paladin = new Paladin();
+        paladin.setLevel(1);
+
+        return paladin;
     }
 }

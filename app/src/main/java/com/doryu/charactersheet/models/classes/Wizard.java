@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Wizard extends CharacterClass {
 
-    public Wizard(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return WIZARD;

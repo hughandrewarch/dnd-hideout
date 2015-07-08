@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Sorcerer extends CharacterClass {
 
-    public Sorcerer(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return SORCERER;

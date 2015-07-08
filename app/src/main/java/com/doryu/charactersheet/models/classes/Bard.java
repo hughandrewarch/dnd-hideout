@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.Dice;
 
 public class Bard extends CharacterClass {
 
-    public Bard(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return BARD;

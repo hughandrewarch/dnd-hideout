@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Rogue extends CharacterClass {
 
-    public Rogue(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return ROGUE;

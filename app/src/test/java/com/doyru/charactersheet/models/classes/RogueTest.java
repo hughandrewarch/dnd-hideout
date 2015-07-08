@@ -25,7 +25,7 @@ public class RogueTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mRogue = new Rogue(fakeCharacter);
+        mRogue = new Rogue();
     }
     @Test
     public void roguesShouldBeRogues() {

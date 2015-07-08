@@ -25,7 +25,7 @@ public class FighterTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mFighter = new Fighter(fakeCharacter);
+        mFighter = new Fighter();
     }
 
     @Test

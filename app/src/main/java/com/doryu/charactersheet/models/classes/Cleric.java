@@ -5,10 +5,6 @@ import com.doryu.charactersheet.models.CharacterModel;
 
 public class Cleric extends CharacterClass {
 
-    public Cleric(CharacterModel character) {
-        super(character);
-    }
-
     @Override
     public int getClassType() {
         return CLERIC;

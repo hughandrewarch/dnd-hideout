@@ -25,7 +25,7 @@ public class RangerTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mRanger = new Ranger(fakeCharacter);
+        mRanger = new Ranger();
     }
 
     @Test

@@ -15,6 +15,8 @@ import com.doryu.charactersheet.models.classes.Cleric;
 import com.doryu.charactersheet.models.classes.Paladin;
 import com.doyru.charactersheet.util.FakeDataUtil;
 
+import java.util.ArrayList;
+
 import static org.fest.assertions.api.Assertions.assertThat;
 
 @RunWith(RobolectricGradleTestRunner.class)
@@ -660,7 +662,7 @@ public class CharacterModelTest {
     public void checkProficiencyBonus() {
         CharacterModel character = FakeDataUtil.getCharacterWithZeroAttributes();
 
-        Paladin paladin = new Paladin(character);
+        Paladin paladin = new Paladin();
         paladin.setLevel(1);
         character.addCharacterClass(paladin);
         assertThat(character.getProficiencyBonus()).isEqualTo(2);
@@ -668,7 +670,7 @@ public class CharacterModelTest {
         paladin.setLevel(6);
         assertThat(character.getProficiencyBonus()).isEqualTo(3);
 
-        Cleric cleric = new Cleric(character);
+        Cleric cleric = new Cleric();
         cleric.setLevel(2);
         character.addCharacterClass(cleric);
 
@@ -679,9 +681,9 @@ public class CharacterModelTest {
     @Test
     public void checkCharacterClassList() {
         CharacterModel character = FakeDataUtil.getCharacterWithZeroAttributes();
-        Paladin paladin = new Paladin(character);
+        Paladin paladin = new Paladin();
         paladin.setLevel(1);
-        Cleric cleric = new Cleric(character);
+        Cleric cleric = new Cleric();
         cleric.setLevel(2);
 
         character.addCharacterClass(paladin);
@@ -690,14 +692,24 @@ public class CharacterModelTest {
         int actualCharacterClassListSize = character.getCharacterClassList().size();
         int expectedCharacterClassListSize = 2;
         assertThat(actualCharacterClassListSize).isEqualTo(expectedCharacterClassListSize);
+
+        CharacterClass firstClass = character.getCharacterClassList().get(0);
+        int actualFirstClassCharacterId = firstClass.getCharacter().getId();
+        int expectedFirstClassCharacterId = character.getId();
+        assertThat(actualFirstClassCharacterId).isEqualTo(expectedFirstClassCharacterId);
+
+        CharacterClass secondClass = character.getCharacterClassList().get(1);
+        int actualSecondClassCharacterId = secondClass.getCharacter().getId();
+        int expectedSecondClassCharacterId = character.getId();
+        assertThat(actualSecondClassCharacterId).isEqualTo(expectedSecondClassCharacterId);
     }
 
     @Test
     public void checkBuildAddCharacterClassList() {
         CharacterModel character = FakeDataUtil.getCharacterWithZeroAttributes();
-        Paladin paladin = new Paladin(character);
+        Paladin paladin = new Paladin();
         paladin.setLevel(1);
-        Cleric cleric = new Cleric(character);
+        Cleric cleric = new Cleric();
         cleric.setLevel(2);
 
         SparseArray<CharacterClass> classes = new SparseArray<>();
@@ -709,5 +721,39 @@ public class CharacterModelTest {
         int actualCharacterClassListSize = character.getCharacterClassList().size();
         int expectedCharacterClassListSize = 2;
         assertThat(actualCharacterClassListSize).isEqualTo(expectedCharacterClassListSize);
+
+        CharacterClass firstClass = character.getCharacterClassList().get(0);
+        int actualFirstClassCharacterId = firstClass.getCharacter().getId();
+        int expectedFirstClassCharacterId = character.getId();
+        assertThat(actualFirstClassCharacterId).isEqualTo(expectedFirstClassCharacterId);
+
+        CharacterClass secondClass = character.getCharacterClassList().get(1);
+        int actualSecondClassCharacterId = secondClass.getCharacter().getId();
+        int expectedSecondClassCharacterId = character.getId();
+        assertThat(actualSecondClassCharacterId).isEqualTo(expectedSecondClassCharacterId);
+    }
+
+    @Test
+    public void addingClassesShouldSetCharacterId() {
+        CharacterModel character = FakeDataUtil.getCharacter();
+        character.setId(8);
+
+        Paladin paladin = new Paladin();
+        character.addCharacterClass(paladin);
+
+        assertThat(paladin.getCharacterId()).isEqualTo(character.getId());
+    }
+
+    @Test
+    public void checkAddingArrayListOfCharacterClasses() {
+        ArrayList<CharacterClass> characterClasses = new ArrayList<>();
+        characterClasses.add(new Paladin());
+        characterClasses.add(new Cleric());
+
+        CharacterModel character = FakeDataUtil.getCharacter();
+        character.setCharacterClasses(characterClasses);
+
+        ArrayList<CharacterClass> resultingCharacterClasses = character.getCharacterClassList();
+        assertThat(resultingCharacterClasses).hasSize(2);
     }
 }

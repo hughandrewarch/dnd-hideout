@@ -25,7 +25,7 @@ public class MonkTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mMonk = new Monk(fakeCharacter);
+        mMonk = new Monk();
     }
 
     @Test

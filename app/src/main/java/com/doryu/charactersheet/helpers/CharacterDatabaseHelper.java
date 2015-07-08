@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 
+import com.doryu.charactersheet.datasets.CharacterClassTable;
 import com.doryu.charactersheet.datasets.CharacterTable;
 
 public class CharacterDatabaseHelper extends SQLiteOpenHelper {
@@ -25,6 +26,7 @@ public class CharacterDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
         CharacterTable.onCreate(database);
+        CharacterClassTable.onCreate(database);
     }
 
     // Method is called during an upgrade of the database,

@@ -1,9 +1,12 @@
-package com.doyru.charactersheet;
+package com.doyru.charactersheet.datasources;
 
 import com.doryu.charactersheet.BuildConfig;
 import com.doryu.charactersheet.CharacterSheetApplication;
 import com.doryu.charactersheet.datasources.CharacterDataSource;
 import com.doryu.charactersheet.models.CharacterModel;
+import com.doryu.charactersheet.models.classes.CharacterClass;
+import com.doryu.charactersheet.models.classes.Cleric;
+import com.doryu.charactersheet.models.classes.Paladin;
 import com.doyru.charactersheet.util.FakeDataUtil;
 
 import org.junit.Test;
@@ -11,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -61,5 +65,58 @@ public class CharacterModelDataSourceTest {
     private CharacterDataSource getCharacterDataSource() {
         CharacterDataSource characterDataSource = new CharacterDataSource(CharacterSheetApplication.getAppContext());
         return characterDataSource;
+    }
+
+    @Test
+    public void savingCharacterShouldSaveClasses() {
+        CharacterModel characterToInsert = FakeDataUtil.getCharacter();
+        characterToInsert.setId(0);
+
+        Paladin paladin = new Paladin();
+        paladin.setLevel(4);
+        Cleric cleric = new Cleric();
+        cleric.setLevel(1);
+
+        characterToInsert.addCharacterClass(paladin);
+        characterToInsert.addCharacterClass(cleric);
+
+        CharacterDataSource dataSource = getCharacterDataSource();
+        dataSource.open();
+        dataSource.createCharacter(characterToInsert);
+
+        CharacterModel resultingCharacter = dataSource.getAllCharacters().get(0);
+        ArrayList<CharacterClass> characterClassList = resultingCharacter.getCharacterClassList();
+        assertThat(characterClassList).isNotEmpty();
+
+        CharacterClass resultingCleric = characterClassList.get(0);
+        assertThat(resultingCleric).isInstanceOf(Cleric.class);
+        assertThat(resultingCleric.getLevel()).isEqualTo(1);
+
+        CharacterClass resultingPaladin = characterClassList.get(1);
+        assertThat(resultingPaladin).isInstanceOf(Paladin.class);
+        assertThat(paladin.getLevel()).isEqualTo(4);
+
+        dataSource.close();
+    }
+
+    @Test
+    public void shouldBeAbleToUpdateCharacter() {
+        CharacterModel characterModel = FakeDataUtil.getCharacterWithZeroAttributes();
+        CharacterDataSource dataSource = getCharacterDataSource();
+
+        dataSource.open();
+        dataSource.createCharacter(characterModel);
+
+        characterModel.setExperience(300);
+        dataSource.createCharacter(characterModel);
+
+        ArrayList<CharacterModel> characterModels = dataSource.getAllCharacters();
+        dataSource.close();
+
+        assertThat(characterModels).hasSize(1);
+
+        int expectedExp = 300;
+        int actualExp = characterModels.get(0).getExperience();
+        assertThat(actualExp).isEqualTo(expectedExp);
     }
 }

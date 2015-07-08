@@ -26,7 +26,8 @@ public class PaladinTest {
     @Before
     public void setup() {
         CharacterModel fakeCharacter = FakeDataUtil.getCharacter();
-        mPaladin = new Paladin(fakeCharacter);
+        mPaladin = new Paladin();
+        fakeCharacter.addCharacterClass(mPaladin);
     }
 
     @Test

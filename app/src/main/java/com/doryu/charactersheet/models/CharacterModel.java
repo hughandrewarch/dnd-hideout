@@ -120,6 +120,17 @@ public class CharacterModel {
 
     public void setCharacterClasses(SparseArray<CharacterClass> characterClasses) {
         mCharacterClasses = characterClasses;
+
+        for (CharacterClass characterClass : getCharacterClassList()) {
+            characterClass.setCharacter(this);
+        }
+    }
+
+    public void setCharacterClasses(ArrayList<CharacterClass> characterClasses) {
+        for (CharacterClass characterClass : characterClasses) {
+            characterClass.setCharacter(this);
+            mCharacterClasses.put(characterClass.getClassType(), characterClass);
+        }
     }
 
     public ArrayList<CharacterClass> getCharacterClassList() {
@@ -136,6 +147,7 @@ public class CharacterModel {
     }
 
     public void addCharacterClass(CharacterClass characterClass) {
+        characterClass.setCharacter(this);
         mCharacterClasses.put(characterClass.getClassType(), characterClass);
     }
 
