@@ -11,7 +11,7 @@ import retrofit.client.Response;
 import retrofit.mime.TypedByteArray;
 
 public class MockClient implements Client {
-        private static final String MOCK_SPELL_RESPONSE = "[{\"id\":1,\"name\":\"Acid Splash\",\"level\":0,\"range\":\"60 feet\",\"casting_time\":\"1 action\",\"duration\":\"Instantaneous\",\"school\":\"Conjuration\",\"concentration\":false,\"ritual\":false,\"components\":\"VS\",\"materials\":\"\",\"description\":\"\"}]";
+        private static final String MOCK_SPELL_RESPONSE = "[{\"id\":1,\"name\":\"Das Spell\",\"level\":9,\"range\":\"60 feet\",\"casting_time\":\"1 action\",\"duration\":\"Instantaneous\",\"school\":\"Conjuration\",\"concentration\":false,\"ritual\":true,\"components\":\"VSM\",\"materials\":\"some stuff\",\"description\":\"the description\"}]";
 
         @Override
         public Response execute(Request request) throws IOException {

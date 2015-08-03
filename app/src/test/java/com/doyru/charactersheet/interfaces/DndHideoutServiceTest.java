@@ -56,4 +56,43 @@ public class DndHideoutServiceTest {
 
         assertThat(latch.getCount()).isEqualTo(0);
     }
+
+    @Test
+    public void spellsReturnedShouldHavePopulatedProperties() {
+        MockExecutor executor = new MockExecutor();
+
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("http://localhost")
+                .setClient(new MockClient())
+                .setExecutors(executor, executor)
+                .build();
+
+        Callback callback = new Callback<List<Spell>>() {
+            @Override
+            public void success(List<Spell> spells, Response response) {
+                Spell spell = spells.get(0);
+
+                assertThat(spell.getId()).isEqualTo(1);
+                assertThat(spell.getName()).isEqualTo("Das Spell");
+                assertThat(spell.getLevel()).isEqualTo(9);
+                assertThat(spell.getRange()).isEqualTo("60 feet");
+                assertThat(spell.getCastingTime()).isEqualTo("1 action");
+                assertThat(spell.getDuration()).isEqualTo("Instantaneous");
+                assertThat(spell.getSchool()).isEqualTo("Conjuration");
+                assertThat(spell.isConcentration()).isEqualTo(false);
+                assertThat(spell.isRitual()).isEqualTo(true);
+                assertThat(spell.getComponents()).isEqualTo("VSM");
+                assertThat(spell.getMaterials()).isEqualTo("some stuff");
+                assertThat(spell.getDescription()).isEqualTo("the description");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                fail("MockClient should not fail");
+            }
+        };
+
+        DndHideoutService service = restAdapter.create(DndHideoutService.class);
+        service.getSpells(callback);
+    }
 }
