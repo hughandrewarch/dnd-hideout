@@ -33,6 +33,10 @@ public class WarlockTest {
         int actualClass = mWarlock.getClassType();
         int expectedClass = CharacterClass.WARLOCK;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mWarlock.getClassName();
+        String expectedClassName = "Warlock";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test

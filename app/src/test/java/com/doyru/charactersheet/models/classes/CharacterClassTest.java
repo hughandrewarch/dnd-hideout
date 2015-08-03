@@ -80,11 +80,25 @@ public class CharacterClassTest {
         assertThat(genericClass.getProficiencyBonus()).isEqualTo(6);
     }
 
+    @Test
+    public void classNameShouldLowerCase() {
+        GenericClass genericClass = new GenericClass();
+        String actualLowerCaseName = genericClass.getLowerCaseClassName();
+        String expectedLowerCaseName = "class";
+
+        assertThat(actualLowerCaseName).isEqualTo(expectedLowerCaseName);
+    }
+
     private static class GenericClass extends CharacterClass {
 
         @Override
         public int getClassType() {
             return 0;
+        }
+
+        @Override
+        public String getClassName() {
+            return "Class";
         }
 
         @Override

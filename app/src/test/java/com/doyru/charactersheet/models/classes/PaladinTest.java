@@ -3,7 +3,6 @@ package com.doyru.charactersheet.models.classes;
 import com.doryu.charactersheet.BuildConfig;
 import com.doryu.charactersheet.models.CharacterModel;
 import com.doryu.charactersheet.models.Dice;
-import com.doryu.charactersheet.models.classes.Bard;
 import com.doryu.charactersheet.models.classes.CharacterClass;
 import com.doryu.charactersheet.models.classes.Paladin;
 import com.doyru.charactersheet.assertions.DiceAssert;
@@ -35,6 +34,10 @@ public class PaladinTest {
         int actualClass = mPaladin.getClassType();
         int expectedClass = CharacterClass.PALADIN;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mPaladin.getClassName();
+        String expectedClassName = "Paladin";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test

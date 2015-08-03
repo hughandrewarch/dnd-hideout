@@ -33,6 +33,10 @@ public class RangerTest {
         int actualClass = mRanger.getClassType();
         int expectedClass = CharacterClass.RANGER;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mRanger.getClassName();
+        String expectedClassName = "Ranger";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test

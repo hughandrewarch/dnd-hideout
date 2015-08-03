@@ -33,6 +33,10 @@ public class FighterTest {
         int actualClass = mFighter.getClassType();
         int expectedClass = CharacterClass.FIGHTER;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mFighter.getClassName();
+        String expectedClassName = "Fighter";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test

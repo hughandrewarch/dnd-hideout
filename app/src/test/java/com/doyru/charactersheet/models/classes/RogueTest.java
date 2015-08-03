@@ -32,6 +32,10 @@ public class RogueTest {
         int actualClass = mRogue.getClassType();
         int expectedClass = CharacterClass.ROGUE;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mRogue.getClassName();
+        String expectedClassName = "Rogue";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test

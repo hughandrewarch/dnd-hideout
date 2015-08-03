@@ -1,13 +1,19 @@
 package com.doryu.charactersheet.models.classes;
 
+import com.doryu.charactersheet.CharacterSheetApplication;
+import com.doryu.charactersheet.R;
 import com.doryu.charactersheet.models.Dice;
-import com.doryu.charactersheet.models.CharacterModel;
 
 public class Paladin extends CharacterClass {
 
     @Override
     public int getClassType() {
         return PALADIN;
+    }
+
+    @Override
+    public String getClassName() {
+        return CharacterSheetApplication.getAppContext().getString(R.string.class_paladin);
     }
 
     @Override

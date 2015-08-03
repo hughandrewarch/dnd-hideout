@@ -1,5 +1,7 @@
 package com.doryu.charactersheet.models.classes;
 
+import android.content.Context;
+
 import com.doryu.charactersheet.models.*;
 
 import java.lang.ref.WeakReference;
@@ -69,9 +71,14 @@ public abstract class CharacterClass {
     }
 
     public abstract int getClassType();
+    public abstract String getClassName();
     public abstract int getNumberSpellsKnown();
     public abstract int getNumberCantripsKnown();
     public abstract Dice getHitDice();
+
+    public String getLowerCaseClassName() {
+        return getClassName().toLowerCase();
+    }
 
     public int getCharacterId() {
         return mCharacterId;

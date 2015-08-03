@@ -34,6 +34,10 @@ public class DruidTest {
         int actualClass = mDruid.getClassType();
         int expectedClass = CharacterClass.DRUID;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mDruid.getClassName();
+        String expectedClassName = "Druid";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test

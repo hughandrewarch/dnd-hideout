@@ -1,6 +1,7 @@
 package com.doryu.charactersheet.models.classes;
 
-import com.doryu.charactersheet.models.CharacterModel;
+import com.doryu.charactersheet.CharacterSheetApplication;
+import com.doryu.charactersheet.R;
 import com.doryu.charactersheet.models.Dice;
 
 public class Bard extends CharacterClass {
@@ -8,6 +9,11 @@ public class Bard extends CharacterClass {
     @Override
     public int getClassType() {
         return BARD;
+    }
+
+    @Override
+    public String getClassName() {
+        return CharacterSheetApplication.getAppContext().getString(R.string.class_bard);
     }
 
     @Override

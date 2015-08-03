@@ -33,6 +33,10 @@ public class MonkTest {
         int actualClass = mMonk.getClassType();
         int expectedClass = CharacterClass.MONK;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mMonk.getClassName();
+        String expectedClassName = "Monk";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test

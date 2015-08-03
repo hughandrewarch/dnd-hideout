@@ -34,6 +34,10 @@ public class WizardTest {
         int actualClass = mWizard.getClassType();
         int expectedClass = CharacterClass.WIZARD;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mWizard.getClassName();
+        String expectedClassName = "Wizard";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test

@@ -34,6 +34,10 @@ public class BarbarianTest {
         int actualClass = mBarbarian.getClassType();
         int expectedClass = CharacterClass.BARBARIAN;
         assertThat(actualClass).isEqualTo(expectedClass);
+
+        String actualClassName = mBarbarian.getClassName();
+        String expectedClassName = "Barbarian";
+        assertThat(actualClassName).isEqualTo(expectedClassName);
     }
 
     @Test
